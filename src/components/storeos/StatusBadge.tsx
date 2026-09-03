@@ -6,7 +6,7 @@ type Tone = "brand" | "lagoon" | "amber" | "coral" | "muted" | "deep";
 const TONES: Record<Tone, string> = {
   brand: "bg-brand/10 text-brand",
   lagoon: "bg-lagoon/20 text-brand-deep",
-  amber: "bg-amber/25 text-amber-foreground",
+  amber: "bg-amber/30 text-brand-deep",
   coral: "bg-coral/15 text-coral",
   muted: "bg-muted text-muted-foreground",
   deep: "bg-brand-deep/10 text-brand-deep",
