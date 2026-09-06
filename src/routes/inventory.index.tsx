@@ -12,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDemo } from "@/lib/demo/store";
 import { inr, num, prettyDate, titleCase } from "@/lib/format";
 import {
-  byId,
   categoryName,
   inventoryValue,
   itemName,
@@ -393,7 +392,6 @@ function InventoryPage() {
           setDeleteCat(null);
         }}
       />
-      <span className="hidden">{byId(state.items, "x")?.name}</span>
     </div>
   );
 }
