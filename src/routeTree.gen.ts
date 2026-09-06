@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BusinessRouteImport } from './routes/business'
 import { Route as RestaurantsRouteImport } from './routes/restaurants'
 import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
+import { Route as InventoryAdjustmentsRouteImport } from './routes/inventory.adjustments'
 import { Route as StoresIndexRouteImport } from './routes/stores.index'
 import { Route as StoresStoreIdRouteImport } from './routes/stores.$storeId'
+import { Route as InventoryCountsIndexRouteImport } from './routes/inventory.counts.index'
+import { Route as InventoryCountsCountIdRouteImport } from './routes/inventory.counts.$countId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -36,6 +39,11 @@ const InventoryIndexRoute = InventoryIndexRouteImport.update({
   path: '/inventory/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryAdjustmentsRoute = InventoryAdjustmentsRouteImport.update({
+  id: '/inventory/adjustments',
+  path: '/inventory/adjustments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StoresIndexRoute = StoresIndexRouteImport.update({
   id: '/stores/',
   path: '/stores/',
@@ -46,31 +54,50 @@ const StoresStoreIdRoute = StoresStoreIdRouteImport.update({
   path: '/stores/$storeId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryCountsIndexRoute = InventoryCountsIndexRouteImport.update({
+  id: '/inventory/counts/',
+  path: '/inventory/counts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryCountsCountIdRoute = InventoryCountsCountIdRouteImport.update({
+  id: '/inventory/counts/$countId',
+  path: '/inventory/counts/$countId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/business': typeof BusinessRoute
   '/restaurants': typeof RestaurantsRoute
+  '/inventory/adjustments': typeof InventoryAdjustmentsRoute
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory/': typeof InventoryIndexRoute
   '/stores/': typeof StoresIndexRoute
+  '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
+  '/inventory/counts/': typeof InventoryCountsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/business': typeof BusinessRoute
   '/restaurants': typeof RestaurantsRoute
+  '/inventory/adjustments': typeof InventoryAdjustmentsRoute
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory': typeof InventoryIndexRoute
   '/stores': typeof StoresIndexRoute
+  '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
+  '/inventory/counts': typeof InventoryCountsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/business': typeof BusinessRoute
   '/restaurants': typeof RestaurantsRoute
+  '/inventory/adjustments': typeof InventoryAdjustmentsRoute
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory/': typeof InventoryIndexRoute
   '/stores/': typeof StoresIndexRoute
+  '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
+  '/inventory/counts/': typeof InventoryCountsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,34 +105,46 @@ export interface FileRouteTypes {
     | '/'
     | '/business'
     | '/restaurants'
+    | '/inventory/adjustments'
     | '/stores/$storeId'
     | '/inventory/'
     | '/stores/'
+    | '/inventory/counts/$countId'
+    | '/inventory/counts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/business'
     | '/restaurants'
+    | '/inventory/adjustments'
     | '/stores/$storeId'
     | '/inventory'
     | '/stores'
+    | '/inventory/counts/$countId'
+    | '/inventory/counts'
   id:
     | '__root__'
     | '/'
     | '/business'
     | '/restaurants'
+    | '/inventory/adjustments'
     | '/stores/$storeId'
     | '/inventory/'
     | '/stores/'
+    | '/inventory/counts/$countId'
+    | '/inventory/counts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BusinessRoute: typeof BusinessRoute
   RestaurantsRoute: typeof RestaurantsRoute
+  InventoryAdjustmentsRoute: typeof InventoryAdjustmentsRoute
   StoresStoreIdRoute: typeof StoresStoreIdRoute
   InventoryIndexRoute: typeof InventoryIndexRoute
   StoresIndexRoute: typeof StoresIndexRoute
+  InventoryCountsCountIdRoute: typeof InventoryCountsCountIdRoute
+  InventoryCountsIndexRoute: typeof InventoryCountsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -138,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/adjustments': {
+      id: '/inventory/adjustments'
+      path: '/inventory/adjustments'
+      fullPath: '/inventory/adjustments'
+      preLoaderRoute: typeof InventoryAdjustmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stores/': {
       id: '/stores/'
       path: '/stores'
@@ -152,6 +198,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoresStoreIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/counts/': {
+      id: '/inventory/counts/'
+      path: '/inventory/counts'
+      fullPath: '/inventory/counts/'
+      preLoaderRoute: typeof InventoryCountsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/counts/$countId': {
+      id: '/inventory/counts/$countId'
+      path: '/inventory/counts/$countId'
+      fullPath: '/inventory/counts/$countId'
+      preLoaderRoute: typeof InventoryCountsCountIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -159,9 +219,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BusinessRoute: BusinessRoute,
   RestaurantsRoute: RestaurantsRoute,
+  InventoryAdjustmentsRoute: InventoryAdjustmentsRoute,
   StoresStoreIdRoute: StoresStoreIdRoute,
   InventoryIndexRoute: InventoryIndexRoute,
   StoresIndexRoute: StoresIndexRoute,
+  InventoryCountsCountIdRoute: InventoryCountsCountIdRoute,
+  InventoryCountsIndexRoute: InventoryCountsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
