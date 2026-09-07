@@ -16,6 +16,7 @@ import { Route as InventoryIndexRouteImport } from './routes/inventory.index'
 import { Route as InventoryAdjustmentsRouteImport } from './routes/inventory.adjustments'
 import { Route as StoresIndexRouteImport } from './routes/stores.index'
 import { Route as StoresStoreIdRouteImport } from './routes/stores.$storeId'
+import { Route as TransfersIndexRouteImport } from './routes/transfers.index'
 import { Route as InventoryCountsIndexRouteImport } from './routes/inventory.counts.index'
 import { Route as InventoryCountsCountIdRouteImport } from './routes/inventory.counts.$countId'
 
@@ -54,6 +55,11 @@ const StoresStoreIdRoute = StoresStoreIdRouteImport.update({
   path: '/stores/$storeId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransfersIndexRoute = TransfersIndexRouteImport.update({
+  id: '/transfers/',
+  path: '/transfers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InventoryCountsIndexRoute = InventoryCountsIndexRouteImport.update({
   id: '/inventory/counts/',
   path: '/inventory/counts/',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory/': typeof InventoryIndexRoute
   '/stores/': typeof StoresIndexRoute
+  '/transfers/': typeof TransfersIndexRoute
   '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
   '/inventory/counts/': typeof InventoryCountsIndexRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory': typeof InventoryIndexRoute
   '/stores': typeof StoresIndexRoute
+  '/transfers': typeof TransfersIndexRoute
   '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
   '/inventory/counts': typeof InventoryCountsIndexRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/stores/$storeId': typeof StoresStoreIdRoute
   '/inventory/': typeof InventoryIndexRoute
   '/stores/': typeof StoresIndexRoute
+  '/transfers/': typeof TransfersIndexRoute
   '/inventory/counts/$countId': typeof InventoryCountsCountIdRoute
   '/inventory/counts/': typeof InventoryCountsIndexRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/stores/$storeId'
     | '/inventory/'
     | '/stores/'
+    | '/transfers/'
     | '/inventory/counts/$countId'
     | '/inventory/counts/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/stores/$storeId'
     | '/inventory'
     | '/stores'
+    | '/transfers'
     | '/inventory/counts/$countId'
     | '/inventory/counts'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/stores/$storeId'
     | '/inventory/'
     | '/stores/'
+    | '/transfers/'
     | '/inventory/counts/$countId'
     | '/inventory/counts/'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   StoresStoreIdRoute: typeof StoresStoreIdRoute
   InventoryIndexRoute: typeof InventoryIndexRoute
   StoresIndexRoute: typeof StoresIndexRoute
+  TransfersIndexRoute: typeof TransfersIndexRoute
   InventoryCountsCountIdRoute: typeof InventoryCountsCountIdRoute
   InventoryCountsIndexRoute: typeof InventoryCountsIndexRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoresStoreIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transfers/': {
+      id: '/transfers/'
+      path: '/transfers'
+      fullPath: '/transfers/'
+      preLoaderRoute: typeof TransfersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inventory/counts/': {
       id: '/inventory/counts/'
       path: '/inventory/counts'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   StoresStoreIdRoute: StoresStoreIdRoute,
   InventoryIndexRoute: InventoryIndexRoute,
   StoresIndexRoute: StoresIndexRoute,
+  TransfersIndexRoute: TransfersIndexRoute,
   InventoryCountsCountIdRoute: InventoryCountsCountIdRoute,
   InventoryCountsIndexRoute: InventoryCountsIndexRoute,
 }
