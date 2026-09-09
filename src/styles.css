@@ -188,11 +188,11 @@
   color: transparent;
 }
 
-/* Use the uploaded StoreOS.png as the application logo in the sidebar. */
-.sticky.top-0.h-screen > .flex.h-16.shrink-0 > div:first-child {
+/* Use the existing StoreOS.png as the application logo. Keep favicon.png separate. */
+.flex.h-full.flex-col > .flex.h-16.shrink-0 > div:first-child {
   width: 150px;
   height: 48px;
-  flex-shrink: 0;
+  flex: 0 0 150px;
   display: block;
   background: url('/StoreOS.png') center / contain no-repeat !important;
   background-color: transparent !important;
@@ -200,6 +200,6 @@
   font-size: 0;
 }
 
-.sticky.top-0.h-screen > .flex.h-16.shrink-0 > div:first-child + div {
+.flex.h-full.flex-col > .flex.h-16.shrink-0 > div:first-child + div {
   display: none;
 }
