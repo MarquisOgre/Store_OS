@@ -56,7 +56,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "StoreOS — Multi-location Inventory & Operations" },
       { property: "og:description", content: "Run stores, restaurants, inventory, transfers, counts and reporting from one console." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://store-tpty.vercel.app/" },
+      { property: "og:image", content: "https://store-tpty.vercel.app/favicon.png" },
+      { property: "og:image:type", content: "image/png" },
+      { property: "og:image:width", content: "1000" },
+      { property: "og:image:height", content: "1000" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://store-tpty.vercel.app/favicon.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
