@@ -25,10 +25,7 @@ function NotFoundComponent() {
           This screen isn't part of the StoreOS demo yet.
         </p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
+          <Link to="/" className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
             Back to dashboard
           </Link>
         </div>
@@ -52,19 +49,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Something went wrong. Try again or head back to the dashboard.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
+          <button onClick={() => { router.invalidate(); reset(); }} className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
             Try again
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
-          >
+          <a href="/" className="inline-flex items-center justify-center rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:bg-accent">
             Go home
           </a>
         </div>
@@ -79,16 +67,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "StoreOS — Multi-location Inventory & Operations" },
-      {
-        name: "description",
-        content:
-          "StoreOS is an enterprise operations suite for multi-location restaurant groups: stores, outlets, inventory, transfers and reporting.",
-      },
+      { name: "description", content: "StoreOS is an enterprise operations suite for multi-location restaurant groups: stores, outlets, inventory, transfers and reporting." },
       { property: "og:title", content: "StoreOS — Multi-location Inventory & Operations" },
-      {
-        property: "og:description",
-        content: "Run stores, restaurants, inventory, transfers, counts and reporting from one console.",
-      },
+      { property: "og:description", content: "Run stores, restaurants, inventory, transfers, counts and reporting from one console." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -96,11 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap",
-      },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" },
       { rel: "icon", href: "/favicon.png", type: "image/png", sizes: "512x512" },
       { rel: "apple-touch-icon", href: "/favicon.png", sizes: "512x512" },
     ],
@@ -112,29 +89,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
+  return <html lang="en"><head><HeadContent /></head><body>{children}<Scripts /></body></html>;
 }
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
       <DemoProvider>
-        <AppShell>
-          {/* Required: nested routes render here. */}
-          <Outlet />
-        </AppShell>
+        <AppShell><Outlet /></AppShell>
         <Toaster position="top-right" />
       </DemoProvider>
     </QueryClientProvider>
